@@ -1,0 +1,125 @@
+The story to be synthesized is: हल में वर्षों में भारतीय मत्स्यपालन गतिशील रूप से एक विकासशील क्षेत्र बन गया
+The output syllable file is: 
+The words are : 
+Local date and time Sat Mar  2 16:20:50 2019
+piiiiiidddddd=0
+at0test PROMPTS
+# Extracting monophone and fullcontext labels
+mkdir -p labels/mono
+mkdir -p labels/full
+if [ 1 -eq 1 ]; then \
+		for utt in utts/iitm_unified_don_*.utt; do \
+			base=`basename ${utt} .utt`; \
+			if [ -s ${utt} ]; then \
+				echo "Extracting labels from ${utt}"; \
+				/home/cdac/tts_installation/festival/examples/dumpfeats -eval scripts/extra_feats.scm -relation Segment -feats scripts/label.feats -output tmp.feats ${utt}; \
+			fi; \
+			if [ -s tmp.feats ]; then \
+				gawk -f scripts/label-full.awk tmp.feats > labels/full/${base}.lab; \
+				gawk -f scripts/label-mono.awk tmp.feats > labels/mono/${base}.lab; \
+				rm -f tmp.feats; \
+			fi; \
+		done; \
+	else \
+		for txt in txt/iitm_unified_don_*.txt; do \
+			base=`basename ${txt} .txt`; \
+			if [ -s ${txt} ]; then \
+				echo "Extracting labels from ${txt}"; \
+				/usr/bin/perl scripts/normtext.pl ${txt} > tmp.txt; \
+				/home/pranaw/installation/festival/examples/text2utt tmp.txt > tmp.utt; \
+				/home/cdac/tts_installation/festival/examples/dumpfeats -eval scripts/extra_feats.scm -relation Segment -feats scripts/label.feats -output tmp.feats tmp.utt; \
+				rm -f tmp.txt tmp.utt; \
+			fi; \
+			if [ -s tmp.feats ]; then \
+				gawk -f scripts/label-full.awk tmp.feats > labels/full/${base}.lab; \
+				gawk -f scripts/label-mono.awk tmp.feats > labels/mono/${base}.lab; \
+				rm -f tmp.feats; \
+			fi; \
+		done; \
+	fi
+Extracting labels from utts/iitm_unified_don_test.utt
+# Generating a trainig data script
+mkdir -p scp
+rm -f scp/train.scp
+for cmp in /var/www/html/tts2/HTS2.3_Synthesis_base/data/cmp/iitm_unified_don_*.cmp; do \
+       		if [ -s ${cmp} -a -s labels/mono/`basename ${cmp} .cmp`.lab -a -s labels/full/`basename ${cmp} .cmp`.lab ]; then \
+			echo ${cmp} >> scp/train.scp; \
+		fi \
+	done
+# Generating a generation label script
+rm -f scp/gen.scp
+for lab in labels/gen/*.lab; do \
+                       # pwd >> scp/gen.scp; \
+                      # echo /var/www/tts3/HTS_hindi_male1_parallel/resources1/data >> scp/gen.scp; \
+                   	echo /var/www/tts3/HTS_hindi_male1_parallel/resources1/data/${lab} >> scp/gen.scp; \
+                        #print ${lab} >> scp/gen.scp; \
+	done
+echo "Running a training/synthesis perl script (Training.pl)...."
+Running a training/synthesis perl script (Training.pl)....
+/usr/bin/perl scripts/Training.pl scripts/Config.pm /var/www/tts3/HTS_hindi_male1_parallel/resources1
+
+===============================================================================
+Start synthesizing waveforms using hts_engine at Sat Mar  2 16:20:50 IST 2019
+===============================================================================
+
+Synthesizing a speech waveform from /var/www/tts3/HTS_hindi_male1_parallel/resources1/data/labels/gen/iitm_unified_don_test.lab using hts_engine...done.
+1
+1
+Opening file: wav/123.wav
+File format: 65538 - PCM 16 WAVSample rate: 48000
+Channels: 1
+Max neg value: -0.783661, Max pos value: 0.999969, Max abs value: 0.999969 
+Max neg value: -0.789349, Max pos value: 0.732424, Max abs value: 0.789349 
+amp coeff: 1.266867
+Max neg value: -1.000000, Max pos value: 0.927884, Max abs value: 1.000000 
+Output file has been successfully saved!
+Opening file: wav/1_merlin.wav
+File format: 65538 - PCM 16 WAVSample rate: 48000
+Channels: 1
+Max neg value: -0.732422, Max pos value: 0.999969, Max abs value: 0.999969 
+Max neg value: -0.800000, Max pos value: 0.800000, Max abs value: 0.800000 
+amp coeff: 1.250000
+Max neg value: -1.000000, Max pos value: 1.000000, Max abs value: 1.000000 
+Output file has been successfully saved!
+Opening file: wav/1.wav
+File format: 65538 - PCM 16 WAVSample rate: 48000
+Channels: 1
+Max neg value: -1.000000, Max pos value: 0.999969, Max abs value: 1.000000 
+Max neg value: -0.800000, Max pos value: 0.800000, Max abs value: 0.800000 
+amp coeff: 1.250000
+Max neg value: -1.000000, Max pos value: 1.000000, Max abs value: 1.000000 
+Output file has been successfully saved!
+Opening file: wav/2_merlin.wav
+File format: 65538 - PCM 16 WAVSample rate: 48000
+Channels: 1
+Max neg value: -1.000000, Max pos value: 0.999969, Max abs value: 1.000000 
+Max neg value: -0.800000, Max pos value: 0.800000, Max abs value: 0.800000 
+amp coeff: 1.250000
+Max neg value: -1.000000, Max pos value: 1.000000, Max abs value: 1.000000 
+Output file has been successfully saved!
+Opening file: wav/3_merlin.wav
+File format: 65538 - PCM 16 WAVSample rate: 48000
+Channels: 1
+Max neg value: -0.803345, Max pos value: 0.999969, Max abs value: 0.999969 
+Max neg value: -0.800000, Max pos value: 0.793710, Max abs value: 0.800000 
+amp coeff: 1.250000
+Max neg value: -1.000000, Max pos value: 0.992137, Max abs value: 1.000000 
+Output file has been successfully saved!
+Opening file: wav/4_merlin.wav
+File format: 65538 - PCM 16 WAVSample rate: 48000
+Channels: 1
+Max neg value: -0.455170, Max pos value: 0.999969, Max abs value: 0.999969 
+Max neg value: -0.660961, Max pos value: 0.800000, Max abs value: 0.800000 
+amp coeff: 1.250000
+Max neg value: -0.826201, Max pos value: 1.000000, Max abs value: 1.000000 
+Output file has been successfully saved!
+Opening file: wav/test.wav
+File format: 65538 - PCM 16 WAVSample rate: 48000
+Channels: 1
+Max neg value: -0.835449, Max pos value: 0.999969, Max abs value: 0.999969 
+Max neg value: -0.800000, Max pos value: 0.689779, Max abs value: 0.800000 
+amp coeff: 1.250000
+Max neg value: -1.000000, Max pos value: 0.862224, Max abs value: 1.000000 
+Output file has been successfully saved!
+
+at1

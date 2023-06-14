@@ -1,0 +1,3 @@
+#!/bin/bash
+for i in g++ libncurses5-dev patch libx11-dev sox speech-tools festival; do
+sudo apt -y install $i; done

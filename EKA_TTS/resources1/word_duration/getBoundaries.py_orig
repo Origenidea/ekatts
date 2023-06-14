@@ -1,0 +1,70 @@
+import numpy as np
+import sys
+
+pointer=0
+count=0
+
+if len(sys.argv) != 3:
+	print("---------------------------------------------------------")
+	print("Usage : python  getBoundaries.py boundaryType framePeriod")
+	print('boundaryType = "frame"/"time"')
+	print("framePeriod = frame period (in milliseconds)")
+	print('Example: python getBoundaries.py "time" 5')
+	print("---------------------------------------------------------")
+	sys.exit()
+
+
+boundaryType=sys.argv[1]
+framePeriod=int(sys.argv[2]) #in milliseconds
+
+def checkSIL():
+	global pointer
+	global count
+	if phone_list[pointer] == "SIL" :
+		if boundaryType == "frame":
+			str1="SIL "+ str(count+1)+" "+str(count+(noOfFramesForEachPhone[pointer]))
+		elif boundaryType == "time":
+			str1="SIL "+ str(count*framePeriod)+" "+str((count+noOfFramesForEachPhone[pointer])*framePeriod)
+		else:
+			print("invalid boundary type")
+			sys.exit()
+		print(str1)
+		count=count+noOfFramesForEachPhone[pointer]
+		pointer=pointer+1
+	return
+
+with open("noOfPhonesInEachWord") as f:
+    noOfPhonesInEachWord = f.readlines()
+# remove whitespace characters like `\n` at the end of each line
+noOfPhonesInEachWord = [x.strip() for x in noOfPhonesInEachWord] 
+noOfPhonesInEachWord = np.array(noOfPhonesInEachWord,dtype=np.int32)
+
+with open("noOfFramesForEachPhone") as f:
+    noOfFramesForEachPhone = f.readlines()
+# remove whitespace characters like `\n` at the end of each line
+noOfFramesForEachPhone = [x.strip() for x in noOfFramesForEachPhone] 
+noOfFramesForEachPhone = np.array(noOfFramesForEachPhone,dtype=np.int32)
+
+with open("phone_list") as f:
+    phone_list = f.readlines()
+# remove whitespace characters like `\n` at the end of each line
+phone_list = [x.strip() for x in phone_list] 
+
+wordNumber=0
+for i in noOfPhonesInEachWord:
+	checkSIL()
+	boundaryStart=count+1
+	for j in range(1, i+1):
+		count= count +  noOfFramesForEachPhone[pointer]
+		pointer=pointer+1
+	wordNumber=wordNumber+1
+	if boundaryType == "frame":
+		print("Word"+str(wordNumber)+" "+str(boundaryStart)+" "+str(count))
+	else:
+		print("Word"+str(wordNumber)+" "+str((boundaryStart-1)*framePeriod+1)+" "+str(count*framePeriod))
+if boundaryType == "frame":
+	print("SIL "+str(count+1)+" "+str(count+noOfFramesForEachPhone[pointer]))
+else:
+	print("SIL "+str((count*framePeriod)+1)+" "+str((count+noOfFramesForEachPhone[pointer])*framePeriod))
+	
+

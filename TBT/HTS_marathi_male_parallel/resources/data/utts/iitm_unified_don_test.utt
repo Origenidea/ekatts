@@ -1,0 +1,148 @@
+EST_File utterance
+DataType ascii
+version 2
+EST_Header_End
+Features max_id 40 ; type Text ; iform "\" भारत विकास प्रवेशद्वार \"" ; 
+Stream_Items
+1 id _1 ; name भारत ; whitespace " " ; prepunctuation "" ; 
+2 id _2 ; name विकास ; whitespace " " ; prepunctuation "" ; 
+3 id _3 ; name प्रवेशद्वार ; whitespace " " ; prepunctuation "" ; 
+4 id _6 ; name प्रवेशद्वार ; pbreak B ; pos nil ; 
+5 id _5 ; name विकास ; pbreak NB ; pos nil ; 
+6 id _4 ; name भारत ; pbreak NB ; pos nil ; 
+7 id _7 ; name B ; 
+8 id _8 ; name syl ; stress 0 ; 
+9 id _11 ; name syl ; stress 0 ; 
+10 id _15 ; name syl ; stress 0 ; 
+11 id _18 ; name syl ; stress 0 ; 
+12 id _22 ; name syl ; stress 0 ; 
+13 id _26 ; name syl ; stress 0 ; 
+14 id _29 ; name syl ; stress 0 ; 
+15 id _33 ; name syl ; stress 0 ; 
+16 id _37 ; name SIL ; dur_factor 1 ; end 0.11 ; 
+17 id _9 ; name bh ; dur_factor 1 ; end 0.22 ; 
+18 id _10 ; name aa ; dur_factor 1 ; end 0.33 ; 
+19 id _12 ; name r ; dur_factor 1 ; end 0.44 ; 
+20 id _13 ; name a ; dur_factor 1 ; end 0.55 ; 
+21 id _14 ; name t ; dur_factor 1 ; end 0.66 ; 
+22 id _16 ; name w ; dur_factor 1 ; end 0.77 ; 
+23 id _17 ; name i ; dur_factor 1 ; end 0.88 ; 
+24 id _19 ; name k ; dur_factor 1 ; end 0.99 ; 
+25 id _20 ; name aa ; dur_factor 1 ; end 1.1 ; 
+26 id _21 ; name s ; dur_factor 1 ; end 1.21 ; 
+27 id _23 ; name p ; dur_factor 1 ; end 1.32 ; 
+28 id _24 ; name r ; dur_factor 1 ; end 1.43 ; 
+29 id _25 ; name a ; dur_factor 1 ; end 1.54 ; 
+30 id _27 ; name w ; dur_factor 1 ; end 1.65 ; 
+31 id _28 ; name ee ; dur_factor 1 ; end 1.76 ; 
+32 id _30 ; name sh ; dur_factor 1 ; end 1.87 ; 
+33 id _31 ; name a ; dur_factor 1 ; end 1.98 ; 
+34 id _32 ; name d ; dur_factor 1 ; end 2.09 ; 
+35 id _34 ; name w ; dur_factor 1.5 ; end 2.255 ; 
+36 id _35 ; name aa ; dur_factor 1.5 ; end 2.42 ; 
+37 id _36 ; name r ; dur_factor 1.5 ; end 2.585 ; 
+38 id _38 ; name SIL ; dur_factor 1 ; end 2.695 ; 
+39 id _40 ; f0 110 ; pos 2.585 ; 
+40 id _39 ; f0 130 ; pos 0.11 ; 
+End_of_Stream_Items
+Relations
+Relation Token ; ()
+4 6 1 0 0 0
+1 1 0 4 2 0
+5 5 2 0 0 0
+2 2 0 5 3 1
+6 4 3 0 0 0
+3 3 0 6 0 2
+End_of_Relation
+Relation Word ; ()
+1 6 0 0 2 0
+2 5 0 0 3 1
+3 4 0 0 0 2
+End_of_Relation
+Relation Phrase ; ()
+2 6 1 0 3 0
+3 5 0 0 4 2
+4 4 0 0 0 3
+1 7 0 2 0 0
+End_of_Relation
+Relation Syllable ; ()
+1 8 0 0 2 0
+2 9 0 0 3 1
+3 10 0 0 4 2
+4 11 0 0 5 3
+5 12 0 0 6 4
+6 13 0 0 7 5
+7 14 0 0 8 6
+8 15 0 0 0 7
+End_of_Relation
+Relation Segment ; ()
+1 16 0 0 2 0
+2 17 0 0 3 1
+3 18 0 0 4 2
+4 19 0 0 5 3
+5 20 0 0 6 4
+6 21 0 0 7 5
+7 22 0 0 8 6
+8 23 0 0 9 7
+9 24 0 0 10 8
+10 25 0 0 11 9
+11 26 0 0 12 10
+12 27 0 0 13 11
+13 28 0 0 14 12
+14 29 0 0 15 13
+15 30 0 0 16 14
+16 31 0 0 17 15
+17 32 0 0 18 16
+18 33 0 0 19 17
+19 34 0 0 20 18
+20 35 0 0 21 19
+21 36 0 0 22 20
+22 37 0 0 23 21
+23 38 0 0 0 22
+End_of_Relation
+Relation SylStructure ; ()
+6 17 4 0 7 0
+7 18 0 0 0 6
+4 8 1 6 5 0
+8 19 5 0 9 0
+9 20 0 0 10 8
+10 21 0 0 0 9
+5 9 0 8 0 4
+1 6 0 4 2 0
+13 22 11 0 14 0
+14 23 0 0 0 13
+11 10 2 13 12 0
+15 24 12 0 16 0
+16 25 0 0 17 15
+17 26 0 0 0 16
+12 11 0 15 0 11
+2 5 0 11 3 1
+22 27 18 0 23 0
+23 28 0 0 24 22
+24 29 0 0 0 23
+18 12 3 22 19 0
+25 30 19 0 26 0
+26 31 0 0 0 25
+19 13 0 25 20 18
+27 32 20 0 28 0
+28 33 0 0 29 27
+29 34 0 0 0 28
+20 14 0 27 21 19
+30 35 21 0 31 0
+31 36 0 0 32 30
+32 37 0 0 0 31
+21 15 0 30 0 20
+3 4 0 18 0 2
+End_of_Relation
+Relation IntEvent ; ()
+End_of_Relation
+Relation Intonation ; ()
+End_of_Relation
+Relation Target ; ()
+3 40 1 0 0 0
+1 16 0 3 2 0
+4 39 2 0 0 0
+2 37 0 4 0 1
+End_of_Relation
+End_of_Relations
+End_of_Utterance

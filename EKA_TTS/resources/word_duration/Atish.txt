@@ -1,0 +1,1 @@
+{"id":"1", "data":[ {"Word": "भारत", "Position": 256, "CharPosition": 0},{"Word": "विकास", "Position": 946, "CharPosition": 5},{"Word": "प्रवेशद्वार", "Position": 1636, "CharPosition": 11}]}

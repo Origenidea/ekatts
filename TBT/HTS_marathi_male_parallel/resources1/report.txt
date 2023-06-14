@@ -1,0 +1,1 @@
+lang=marathi gender= male voice_name=tdil_indic_marathi_male

@@ -1,0 +1,7 @@
+python getBoundaries.py $boundaryType $framePeriod $marksid
+
+python getBoundaries.py 'time' 5 '6195b274-391e-4e72-bd4f-fe1958b3f41b'
+
+
+fest_inp6195b274-391e-4e72-bd4f-fe1958b3f41b.txt
+/var/www/tts1/wav_output/fest_inp6195b274-391e-4e72-bd4f-fe1958b3f41b.txt

@@ -1,0 +1,6 @@
+===================================================================
+		28th February 2018
+===================================================================
+1) In scripts/Training.pl, commented the line ---> shell("perl remove_leftout_fal.pl") 
+2) Added complettion timestamps in scripts/Training.pl
+   Ex: print_time("making global variance - complete");
