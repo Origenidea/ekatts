@@ -1,5 +1,5 @@
 #!/bin/sh
-"true" ; exec /home/kishor/TBT/festival/bin/festival --script $0 $*
+"true" ; exec festival --script $0 $*
 #!/bin/sh
 #####################################################-*-mode:shell-script-*-
 ##                                                                       ##
