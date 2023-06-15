@@ -72,8 +72,8 @@ STRMAGIC    = 72089600   # magic number for turning off normalization (72089600 
 
 # Festival commands
 USEUTT    = 1
-TEXT2UTT  = /home/kishor/TBT/festival/examples/text2utt
-DUMPFEATS = /home/kishor/TBT/festival/examples/dumpfeats
+TEXT2UTT  = ../../../TBT/festival/examples/text3utt
+DUMPFEATS = ../../../TBT/festival/examples/dumpfeats
 
 # speech analysis conditions
 SAMPFREQ   = 48000   # Sampling frequency (48kHz)
@@ -275,6 +275,8 @@ lab:
 			base=`basename $${utt} .utt`; \
 			if [ -s $${utt} ]; then \
 				echo "Extracting labels from $${utt}"; \
+				echo ${PWD}" :: "; \
+				echo $(DUMPFEATS) -eval scripts/extra_feats.scm -relation Segment -feats scripts/label.feats -output tmp.feats $${utt}; \
 				$(DUMPFEATS) -eval scripts/extra_feats.scm -relation Segment -feats scripts/label.feats -output tmp.feats $${utt}; \
 			fi; \
 			if [ -s tmp.feats ]; then \
@@ -287,7 +289,7 @@ lab:
 		for txt in txt/$(DATASET)_$(SPEAKER)_*.txt; do \
 			base=`basename $${txt} .txt`; \
 			if [ -s $${txt} ]; then \
-				echo "Extracting labels from $${txt}"; \
+				echo "Extracting txt labels from $${txt}"; \
 				$(PERL) scripts/normtext.pl $${txt} > tmp.txt; \
 				$(TEXT2UTT) tmp.txt > tmp.utt; \
 				$(DUMPFEATS) -eval scripts/extra_feats.scm -relation Segment -feats scripts/label.feats -output tmp.feats tmp.utt; \

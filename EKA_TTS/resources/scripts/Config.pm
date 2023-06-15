@@ -226,7 +226,7 @@ $HEREST    = '/usr/local/HTS-2.3/bin/HERest';
 $HHED      = '/usr/local/HTS-2.3/bin/HHEd';
 $HSMMALIGN = '/usr/local/HTS-2.3/bin/HSMMAlign';
 $HMGENS    = '/usr/local/HTS-2.3/bin/HMGenS';
-$ENGINE    = '/usr/local/bin/hts_engine';
+$ENGINE    = 'hts_engine';
 
 # SPTK commands
 $X2X          = '/usr/local/bin/x2x';

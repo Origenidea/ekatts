@@ -1,5 +1,5 @@
 #!/bin/sh
-"true" ; exec /home/kishor/TBT/festival/bin/festival --script $0 $*
+"true" ; exec festival --script $0 $*
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-*-mode:scheme-*-
 ;;                                                                       ;;
 ;;                Centre for Speech Technology Research                  ;;
@@ -41,7 +41,9 @@
 
 ;;; Because this is a --script type file it has to explicitly
 ;;; load the initfiles: init.scm and user's .festivalrc
-(load (path-append libdir "init.scm"))
+
+;;; This line seems to fail because there's a modern sharedir so lets update it
+(load (path-append datadir "init.scm"))
 
 (define (dumpfeats_help)
   (format t "%s\n"

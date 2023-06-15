@@ -1,9 +1,9 @@
 #!/bin/sh
-
+set -x
 text=$1
 nameOfSynthesizedFile=$2
-lang=$3
-gender=$4
+lang=${3:-marathi}
+gender=${4:-male}
 
 if [ "$2" = "" ] 
 then
@@ -31,11 +31,17 @@ rename 's/^/tdil_indic_don_/g' *
 
 cd ../
 
+# What is this supposed to output?
 make lab
+tree labels
+exit
 rm labels/gen/*
-
 cd labels/full
-for f in *.lab; do cat $f|cut -c23- > ../gen/$f;done
+
+for f in *.lab; do 
+  cat $f|cut -c23- > ../gen/$f;
+done
+
 cd .. # labels folder
 
 cd .. # data folder
@@ -46,6 +52,7 @@ cd .. #HTS23 folder
 echo "Running a training/synthesis perl script (Training.pl)...."
 echo $lang >> pranaw.txt
 echo $gender >> pranaw.txt
+
 /usr/bin/perl scripts/Training.pl scripts/Config.pm $PWD $lang $gender
 
 echo $2
